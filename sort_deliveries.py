@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 import os
@@ -69,9 +69,9 @@ verbose : boolean
             self.my_err = subprocess.STDOUT
 
     def attempt_javac(self, path):
-	"""
-	Function inspired by rettescript.py written by Henrik Hillestad Løvold
-	"""
+        """
+        Function inspired by rettescript.py written by Henrik Hillestad Løvold
+        """
         command = format("javac %s" % os.path.join(path, "*.java"))
         if self.verbose:
             print("%s:" % (command))
@@ -211,8 +211,8 @@ verbose : boolean
             
         if self.execute:
             if self.rename:
-	        self.user_rename()
-	        
+                self.user_rename()
+                
             self.dive_move(root_depth)
             self.dive_delete_dir(root_depth)
             if self.delete:
@@ -335,7 +335,7 @@ verbose : boolean
         for dirpath, subdirList, fileList in os.walk(rootDir):
             for subdir in subdirList:
                 filepath = os.path.join(dirpath, subdir)
-                new_filepath = os.path.join(dirpath, (subdir[0:subdir.find('(')]).replace(" ", ""))
+                new_filepath = os.path.join(dirpath, (subdir[0:subdir.index('(')]).replace(" ", ""))
                 if self.verbose:
                     print("Renaming '%s' to '%s'" % (filepath, new_filepath))
                 elif self.log:
@@ -424,7 +424,7 @@ if __name__=='__main__':
     # Handle arguments
     while argc < argl:
         arg = sys.argv[argc]
-	options = list(arg)
+        options = list(arg)
         for letter in options[1]:
             if letter == 'z':
                 unzip = "true"
